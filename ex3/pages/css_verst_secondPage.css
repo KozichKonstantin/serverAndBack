@@ -1,0 +1,207 @@
+body{
+    margin: 0;
+}
+.container{
+    width: 100%;
+}
+.block_1{
+    height: 7em;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+}
+.block_2{
+    height: 90%;
+    width: 100%;
+}
+header{
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.header_content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(102, 99, 102);
+}
+.name_case{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.name_text{
+    
+    justify-content: center;
+    align-items: center;
+}
+.name_text > h1{
+    display: flex;
+    justify-content: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.name_text > h2{
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.logo_case{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    justify-content: right;
+    align-items: center;
+    margin-right: 10%;
+    -webkit-transition: all 0.5s ease;
+}
+.logo{
+    margin-right: 20px;
+    margin-top: -0.6em;
+   border-radius: 7px; 
+   cursor: pointer;
+   background-color: rgb(40, 40, 40);
+   -webkit-transition: all 0.5s ease;
+}
+.logo:hover{
+    box-shadow: 0px 0px 0px 5px rgb(8, 8, 8, 0.4);
+}
+.main_info{
+    width: 100%;
+    height: 100%;
+}
+.main_info_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(151, 148, 132);
+}
+.headSecondPage{
+    height: 112px;
+}
+.infoSecondPage{
+    /* height: 1200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-bottom: 50px;
+}
+.topText{
+    margin-top: -1px;
+    width: 300px;
+    height: 80px;
+    background-color: rgb(230, 72, 72);
+    border-radius: 0 0 30% 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 10px 10px 0px rgb(0,0, 0, 0.3);
+}
+.lineDesign{
+    width: 80%;
+    height: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    border: 2px solid rgb(230, 72, 72) ;
+}
+.savedList{
+    display: grid;
+    grid-template-columns: calc(100% / 4) calc(100% / 4) calc(100% / 4) calc(100% / 4);;
+    grid-template-rows: 600px;
+    width: 95%;
+    /* height: 555px; */
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+.savedCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    width: 350px;
+    height: 520px;
+    background-color: burlywood;
+    border-radius: 30px;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.savedCardName{
+    margin: 5px;
+}
+.savedCardPicture{
+    margin: 5px;
+    width: 40%;
+    height: 35%;
+    
+}
+.savedCardPicture > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+.savedCardSpecs{
+    display: grid;
+    width: 90%;
+    height: 27%;
+    grid-template-columns:  calc(100% / 3) calc(100% / 3) calc(100% / 3);
+    grid-template-rows: calc(100%/2) calc(100%/2);
+    background-color: bisque;
+    border-radius: 20px;
+    justify-content: space-around;
+}
+.specText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(215, 194, 168);
+    margin: 5px;
+    border-radius: 20px;
+}
+.specText > h2{
+    font-size: 16px;
+}
+.specText > p {
+    font-size: 20px;
+}
+.activityButtons_case{
+    display: grid;
+    width: 90%;
+    height: 20%;
+    background-color: bisque;
+    margin-top: 5px;
+    grid-template-columns:calc(100% / 3) calc(100% / 3) calc(100% / 3);
+    border-radius: 20px;
+}
+.activityButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(215, 194, 168);
+    margin: 5px;
+    border-radius: 50%;
+    -webkit-transition: all 0.5s ease;
+}
+.activityButton > img{
+    width: 60%;
+    height: 60%;
+}
+.activityButton:hover{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
+}
+footer{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(230, 72, 72);
+}
