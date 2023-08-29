@@ -11,15 +11,7 @@ localStorage.clear()
 let elementsMassive = document.querySelector('.toSecondPage');
 
 let savingHeroesButtons = document.getElementsByClassName('saveHero');
-for (let i=0; i < data.length; i++){
-    savingHeroesButtons[i].addEventListener('click', function() {
-        let number =  localStorage.getItem('number') - (-1);
-        localStorage.setItem('number',`${number}`)
-        if (number > 0 & number < 2){
-            d("h2", 'message', elementsMassive, "NEW")} 
-        }
-    )
-}
+
 
 
 
@@ -27,6 +19,13 @@ let valued = [];
 let savedHeroesBase = {};
 
 for(let i=0; i< data.length; i++){
+        savingHeroesButtons[i].addEventListener('click', function() {
+            let number =  localStorage.getItem('number') - (-1);
+            localStorage.setItem('number',`${number}`)
+            if (number > 0 & number < 2){
+                d("h2", 'message', elementsMassive, "NEW")} 
+            }
+        )
    
     savingHeroesButtons[i].addEventListener('click', function() {
      
@@ -37,13 +36,14 @@ for(let i=0; i< data.length; i++){
 
             let stats_input = document.getElementsByClassName(('quantity ' + savedClass + 'Spec'));            
             for(let j=0; j < 6; j++){
-            valued[j] = stats_input[j].value;
+            valued[j] =+ stats_input[j].value;
             savedHeroesBase = [
-                        {"valued" : `${valued}`},
+                        {"valued" : valued},
                         {"img" : `${(data[i]['img'] + '/' + data[i]['currentPicture'])}`}, 
-                        {"class" : `${savedClass}`}]
+                        {"class" : `${savedClass}`},
+                        {"id": `${localStorage.getItem('number')}`}
+                                ]
                         console.log(savedHeroesBase)
-                        
             }
 
            

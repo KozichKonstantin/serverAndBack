@@ -7,12 +7,26 @@ import {data} from './data.js';
 
 
 
-for (let i=1; i<localStorage.getItem("number"); i++){
-let savedHeroesBase = localStorage.getItem(`card${i}`)
-let a = JSON.parse(savedHeroesBase)[0]
-
-console.log(Object.values(a)[0][0])
+for (let i=1; i<=localStorage.getItem("number"); i++){
+let savedHeroesBase = localStorage.getItem(`card${i}`);
+let savedBase = JSON.parse(savedHeroesBase);
+document.getElementsByClassName('savedCardNameText')[i-1].textContent = savedBase[2].class ;
+document.getElementsByClassName('savedCardPictureImg')[i-1].src = savedBase[1].img+ ".jpg";
+// for(let j=1*savedBase[3].id-1; j<6*savedBase[3].id; j++){
+//         document.querySelectorAll('.specValue')[j].textContent = ;
+//         console.log(savedBase[0].valued[j])
+//     }
 }
+
+
+
+
+// 1*savedBase[3].id-1
+
+// console.log(document.getElementsByClassName('.savedCardPictureImg')[i-1]);
+// for(let j=0; j<6*localStorage.getItem("number"); j++){
+//     document.getElementsByClassName('specValue')[j].textContent = savedBase[]
+// }
 
 
 
