@@ -40,8 +40,7 @@ for(let i=0; i< data.length; i++){
             savedHeroesBase = [
                         {"valued" : valued},
                         {"img" : `${(data[i]['img'] + '/' + data[i]['currentPicture'])}`}, 
-                        {"class" : `${savedClass}`},
-                        {"id": `${localStorage.getItem('number')}`}
+                        {"class" : `${savedClass}`}
                                 ]
                         console.log(savedHeroesBase)
             }
