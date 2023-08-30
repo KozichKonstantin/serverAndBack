@@ -17,9 +17,9 @@ let card = document.querySelectorAll(".card");
 for (let e = 0; e < card.length ; e++) {
     d("div", "image_case", card[e])
     d("div", "specs", card[e])
+    card[e].setAttribute('method',"post");
+    
 };
-
-
 
 
 let elementsMassive = document.querySelectorAll(".image_case");
@@ -129,8 +129,9 @@ for (let e = 0; e <elementsMassive.length ; e++) d("p", ``, elementsMassive[e]);
 for (let e = 0; e <elementsMassive.length ; e++) d("button", `saveHero ${data[e].name}`, activityButton[e]);
 
 elementsMassive =  document.querySelectorAll(".saveHero");
-for (let e = 0; e <elementsMassive.length ; e++) d("p", ``, elementsMassive[e]);
-
+for (let e = 0; e <elementsMassive.length ; e++){
+    elementsMassive[e].setAttribute('type','submit');
+    d("p", ``, elementsMassive[e])}  ;
 
 
 

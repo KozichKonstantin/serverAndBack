@@ -1,0 +1,328 @@
+body{
+    margin: 0;
+}
+.container{
+    width: 100%;
+}
+.block_1{
+    height: 7em;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+}
+.block_2{
+    height: 90%;
+    width: 100%;
+}
+header{
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.header_content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(102, 99, 102);
+}
+.name_case{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.name_text{
+    
+    justify-content: center;
+    align-items: center;
+}
+.name_text > h1{
+    display: flex;
+    justify-content: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.name_text > h2{
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.logo_case{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    justify-content: right;
+    align-items: center;
+    margin-right: 30px;
+    -webkit-transition: all 0.5s ease;
+}
+.logo_case > a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    text-decoration: none;
+}
+a:hover > .logo{
+    box-shadow: 0px 0px 0px 5px rgb(65, 65, 65);
+}
+/* a:hover > .message{
+    box-shadow: 0px 5px 0px 0px rgb(65, 65, 65);
+} */
+.logo{
+    margin-top: -0.6em;
+   border-radius: 7px; 
+   cursor: pointer;
+   background-color: rgb(40, 40, 40);
+   -webkit-transition: all 0.5s ease;
+   /* position: fixed; */
+}
+
+.message{
+    content: 'NEW';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: 50px;
+    height: 20px;
+    width: 55px;
+    font-size: 15px;
+    color: black;
+    background-color: rgb(230, 72, 72);
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 2px 2px 2px rgb(65, 65, 65);
+    opacity: 0;
+    animation: appending 0.5s forwards;
+    /* -webkit-transition: all 0.5s ease; */
+}
+@keyframes appending {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.main_info{
+    width: 100%;
+    height: 100%;
+}
+.main_info_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(151, 148, 132);
+}
+.cards_grid{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    margin-top: 10em;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 600px 600px 600px 600px;
+}
+[class^="card"]{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+}
+.card{
+    display: flex;
+    background-color:burlywood;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.image_case{
+    margin: 15px;
+    width: 350px;
+    height: 520px;
+}
+[class^='slideButton_case']{
+
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+}
+[class^='slideButton_case']:hover{
+    opacity: 0.4;
+}
+.slideButton_case_left , .slideButton_case_right {
+    font-size: 150px;
+}
+.slideButton_case_left{
+    z-index: 3;
+    border-radius: 0px 120px 120px 0px;
+}
+.slideButton_case_right{
+    border-radius: 120px 0px 0px 120px;
+}
+[class^='slideButton_case']:hover{
+    opacity: 0.4;
+}
+.hiden{
+    pointer-events: none;
+}
+/* .costil{
+    background-color: black;
+} */
+.image{
+    display: grid;
+    grid-template-columns: calc(100%/5) calc(100%*0.6) calc(100%/5);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+.frame{
+    position: absolute;
+    width: 350px;
+    height: 520px;
+    margin-left: -70px;
+    background-color: #FFF;
+    border-radius: 30px;
+    
+       /*добавить анимацию*/
+}
+.inAnimation{
+    animation: appending 1s forwards;
+}
+@keyframes appending {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.specs{
+    width: 40%;
+    height: 100%;
+    margin-top: 15px
+}
+.specs_text > li{
+    list-style-type: none;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+.quantity_inner * {
+    box-sizing: border-box;    
+}    
+.quantity_inner {
+    display: inline-flex;
+    border-radius: 26px;
+    border: 4px solid #337AB7;
+    position: relative;
+    background: #FFF;
+    z-index: 1;
+    margin-top: 10px;
+}        
+.quantity_inner .bt_minus,
+.quantity_inner .bt_plus,
+.quantity_inner .quantity {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background: #FFF;
+    cursor: pointer;
+    outline: 0;
+    border-radius: 26px;
+}
+.quantity_inner .quantity {
+    width: 60px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+.quantity_inner .bt_minus svg,
+.quantity_inner .bt_plus svg {
+    stroke: #337AB7;
+    stroke-width: 4;
+    transition: 0.5s;
+    margin: 10px;
+    fill: none;
+    height: 20px;
+    width: 20px;
+}    
+
+.quantity_inner .bt_minus:hover svg,
+.quantity_inner .bt_plus:hover svg {
+    stroke: #000;
+}
+.line_d{
+    font-size: 20px;
+}
+.line_up{
+    font-size: 20px;
+}
+.activityButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+}
+.generate_case{
+    display: flex;
+    height: 20%;
+    margin-right: 10px;
+}
+.generate{
+    width: 100px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: rgb(230, 72, 72);
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+}
+.generate:hover{
+    background-color: rgb(255, 181, 181);
+}
+.generate > p::after{
+    content: "GENERATE";
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.saveHero {
+    width: 100px;
+    height: 45px;
+    border-radius: 30px;
+    background-color: rgb(230, 72, 72);
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease;
+}
+.saveHero:hover{
+    background-color: rgb(255, 181, 181);
+}
+.saveHero > p::after{
+    content: "SAVE";
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+footer{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(230, 72, 72);
+}
+@media screen and (max-width: 1100px) {
+    
+}
