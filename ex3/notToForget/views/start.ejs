@@ -1,0 +1,39 @@
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title> 
+            MastersBook1
+        </title>
+        <style>
+            .container{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                }
+                .content{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .content > input{
+                    margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <form name="forma" method="post" action="/about">
+                <div class="content">
+                    <p name="kull"> barbarian</p>
+                    <input name="class">
+                    <input name="image">
+                    <input name="name">
+                    <button type="submit">POST</button>
+                </div>
+            </form>
+        </div>
+    </body>
