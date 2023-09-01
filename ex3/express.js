@@ -5,6 +5,7 @@ const app = express();
 const morgan = require('morgan');
 const Port = 3500;
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
 const urlencondedParcer = express.urlencoded({extended: false})
 const connection = mysql.createConnection({
     host : "localhost",
@@ -44,7 +45,7 @@ app.post('/fp',urlencondedParcer, (req, res)=>{
         // for (i=0; i<6; i++){
         // stats[i] = localStorage.getItem(`stats${i}`)
         // }
-        let addElement = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES (${savedClass}, ${image}, ${stats[0]}, ${stats[1]}, ${stats[2]}, ${stats[3]}, ${stats[4]}, ${stats[5]})`;
+        let addElement = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${savedClass}', '${image}', '${stats[0]}', '${stats[1]}', '${stats[2]}', '${stats[3]}', '${stats[4]}', '${stats[5]})'`;
         connection.query(addElement,(err, result, field)=>{
             console.log(err)
             console.log(result)
