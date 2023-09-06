@@ -20,6 +20,7 @@ for (let e = 0; e < card.length ; e++) {
     d("div", "image_case", card[e])
     d("div", "specs", card[e])
     card[e].setAttribute('method',"post");
+    card[e].action = "/saveCard";
 };
 
 
@@ -90,6 +91,7 @@ for (let i=0; i<inputsMassive.length; i++){
     for(let j = 0; j < data.length; j++){
         if( grandadClass == data[j]['name']){
             inputsMassive[i].classList.add(`${grandadClass}Spec`);
+            inputsMassive[i].setAttribute('name', 'inner');
         }
     }
 }
@@ -117,7 +119,10 @@ for (let e = 0; e <elementsMassive.length ; e++) d("line", `line_up`, elementsMa
 
 
 elementsMassive =  document.querySelectorAll(".specs_text");
-for (let e = 0; e <elementsMassive.length ; e++) d("div", `activityButton`, elementsMassive[e]);
+for (let e = 0; e <elementsMassive.length ; e++){   
+    d("div", `activityButton`, elementsMassive[e]);
+    
+}
 
 let activityButton =  document.querySelectorAll(".activityButton");
 for (let e = 0; e <elementsMassive.length ; e++) d("div", `generate_case ${data[e].name}Spec`, activityButton[e]);
@@ -128,11 +133,15 @@ for (let e = 0; e <elementsMassive.length ; e++) d("button", `generate`, element
 elementsMassive =  document.querySelectorAll(".generate");
 for (let e = 0; e <elementsMassive.length ; e++) d("p", ``, elementsMassive[e]);
 
-for (let e = 0; e <elementsMassive.length ; e++) d("button", `saveHero ${data[e].name}`, activityButton[e]);
+for (let e = 0; e <elementsMassive.length ; e++){ 
+    d("button", `saveHero ${data[e].name}`, activityButton[e]);
+}
 
 elementsMassive =  document.querySelectorAll(".saveHero");
-for (let e = 0; e <elementsMassive.length ; e++) d("p", ``, elementsMassive[e]);
-
+for (let e = 0; e <elementsMassive.length ; e++) {
+    elementsMassive[e].setAttribute('type', 'submit');
+    d("p", ``, elementsMassive[e]);
+}
 
 
 

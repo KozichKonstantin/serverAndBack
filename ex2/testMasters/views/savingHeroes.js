@@ -2,17 +2,30 @@ import {data} from './data.js'
 // import {savedHeroesBase} from './data.js'
 import {d} from './generatecard.js';
 
-
+const postData = async (url='', data ={}) =>
+{const response = await fetch(url, {
+     method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+    },
+       body: JSON.stringify(data)
+    });
+    return response.json();
+}
 let elementsMassive = document.querySelector('.toSecondPage');
 
 let savingHeroesButtons = document.getElementsByClassName('saveHero');
 for (let i=0; i < data.length; i++){
     savingHeroesButtons[i].addEventListener('click', function() {
+        postData('/saveCard', {answer: 123, border: 36, xline: 18})
+        .then((data)=>{console.log(data);});
         let number =  localStorage.getItem('number') - (-1);
         localStorage.setItem('number',`${number}`)
             d("h2", 'message', elementsMassive, "NEW")} 
+            
     )
 }
+
 
 
 

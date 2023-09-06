@@ -22,6 +22,7 @@ for (let e = 0; e < card.length ; e++) {
 };
 
 
+
 let elementsMassive = document.querySelectorAll(".image_case");
 for (let e = 0; e <elementsMassive.length ; e++) d("div", `image ${data[e].name}`, elementsMassive[e]);
 
@@ -88,6 +89,7 @@ for (let i=0; i<inputsMassive.length; i++){
     for(let j = 0; j < data.length; j++){
         if( grandadClass == data[j]['name']){
             inputsMassive[i].classList.add(`${grandadClass}Spec`);
+            inputsMassive[i].setAttribute('name', 'inner');
         }
     }
 }

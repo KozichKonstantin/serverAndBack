@@ -1,0 +1,649 @@
+
+
+
+body{
+    margin: 0;
+}
+body._active {
+    overflow: hidden;
+}
+
+body
+.container{
+    width: 100%;
+}
+.block_1{
+    height: 7em;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+}
+.block_2{
+    height: 90%;
+    width: 100%;
+}
+header{
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.header_content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(102, 99, 102);
+}
+.name_case{
+    display:flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.name_text{
+    
+    justify-content: center;
+    align-items: center;
+}
+.name_text > h1{
+    display: flex;
+    justify-content: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.name_text > h2{
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.logo_case{
+    display: flex;
+    width: 100%;
+    position: absolute;
+    justify-content: right;
+    align-items: center;
+    margin-right: 10%;
+    -webkit-transition: all 0.5s ease;
+}
+.logo{
+    margin-right: 20px;
+    margin-top: -0.6em;
+   border-radius: 7px; 
+   cursor: pointer;
+   background-color: rgb(40, 40, 40);
+   -webkit-transition: all 0.5s ease;
+}
+.logo:hover{
+    box-shadow: 0px 0px 0px 5px rgb(8, 8, 8, 0.4);
+}
+.main_info{
+    width: 100%;
+    height: 100%;
+}
+.main_info_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(151, 148, 132);
+}
+.headSecondPage{
+    height: 112px;
+}
+.infoSecondPage{
+    /* height: 1200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-bottom: 50px;
+}
+.topText{
+    margin-top: -1px;
+    width: 300px;
+    height: 80px;
+    background-color: rgb(230, 72, 72);
+    border-radius: 0 0 30% 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 10px 10px 0px rgb(0,0, 0, 0.3);
+}
+.lineDesign{
+    width: 80%;
+    height: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    border: 2px solid rgb(230, 72, 72) ;
+}
+.savedList{
+    display: grid;
+    grid-template-columns: calc(100% / 4) calc(100% / 4) calc(100% / 4) calc(100% / 4);;
+    grid-template-rows: 600px;
+    width: 95%;
+    /* height: 555px; */
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+.savedCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    width: 350px;
+    height: 520px;
+    background-color: burlywood;
+    border-radius: 30px;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.savedCardName{
+    margin: 5px;
+}
+.savedCardPicture{
+    margin: 5px;
+    width: 40%;
+    height: 35%;
+    
+}
+.savedCardPicture > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.savedCardSpecs{
+    display: grid;
+    width: 90%;
+    height: 27%;
+    grid-template-columns:  calc(100% / 3) calc(100% / 3) calc(100% / 3);
+    grid-template-rows: calc(100%/2) calc(100%/2);
+    background-color: bisque;
+    border-radius: 20px;
+    justify-content: space-around;
+}
+.specText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(215, 194, 168);
+    margin: 5px;
+    border-radius: 20px;
+}
+.specText > h2{
+    font-size: 16px;
+}
+.specText > p {
+    font-size: 20px;
+}
+.activityButtons_case{
+    display: grid;
+    width: 90%;
+    height: 20%;
+    background-color: bisque;
+    margin-top: 5px;
+    grid-template-columns:calc(100% / 3) calc(100% / 3) calc(100% / 3);
+    border-radius: 20px;
+}
+.activityButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(215, 194, 168);
+    margin: 5px;
+    border-radius: 50%;
+    -webkit-transition: all 0.5s ease;
+}
+.activityButton > img{
+    width: 60%;
+    height: 60%;
+}
+.activityButton:hover{
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
+}
+footer{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(230, 72, 72);
+}
+
+
+
+
+.closingAnimation{
+    animation: appending 0.5s forwards;
+}
+@keyframes appending {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.none{
+    
+    display: none;
+}
+
+.background{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 950px;
+    height: 850px;
+    background-color: burlywood;
+    border-radius: 30px;
+    position: fixed;
+    top: calc(50% - 400px);
+    left: calc(50% - 450px);
+    z-index: 7;
+    animation: appending 0.5s forwards;
+    /* -webkit-transition: all 0.5s ease; */
+}
+@keyframes appending {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    height: 10%;
+    border-radius: 30px;
+    background-color: bisque;
+    margin-bottom: 10px;
+}
+
+.Current{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    margin: 5px;
+    width: 15%;
+    border-radius: 30px;
+    background-color: burlywood;
+    
+}
+.Current > p{
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+.Current > input{
+    width: 80%;
+    height: 50%;
+    border-color: rgb(230, 72, 72);
+    border-radius: 30px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 95%;
+    border-radius: 30px;
+    background-color: bisque;
+}
+.columnOne{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    width: 30%;
+    border-radius: 30px;
+    background-color: rgb(220, 238, 253);
+}
+.mainSpecs{
+    width: 40%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0, 0.4);
+
+    margin-right: 5px;
+    border-radius: 30px;
+}
+.skilBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    background-color: aliceblue;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 30%;
+}
+/*////////*/
+.aditionalSpecs{
+    width: 50%;
+    height: 95%;
+}
+.simpleRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 95%;
+    height: 25px;
+    background-color: rgb(230, 72, 72, 0.4);
+    border-radius: 30px;
+    margin-bottom: 2px;
+    padding-left: 5px;
+}
+.inspirationBox > .yesOrNo{
+    width: 20px;
+    height: 20px;
+    background-color: bisque;
+    border-radius: 50%;
+    margin-right: 26px;
+}
+.inspirationBox >p{
+    margin-right: 5px;
+}
+.proficiencyBox  > p{
+    margin-right: 6px;
+    margin-left: 5px;
+    font-size: 12px;
+}
+.savingBox{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 160px;
+    width: 95%;
+    background-color: rgb(230, 72, 72, 0.4);
+    border-radius: 20px;
+    
+}
+.savingBox > ul{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+    justify-content: left;
+}
+.savingList{
+    width: 95%;
+    height: 19%;
+    font-size: 12px;
+
+}
+.allSkillsBox{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    height: 395px;
+    width: 95%;
+    background-color: rgb(230, 72, 72, 0.4);
+    border-radius: 20px;
+    margin-top: 5px;
+}
+/* input */
+
+
+.classname{
+    pointer-events: none;
+}
+
+
+
+/*  /////////////////////////////  */
+.columnTwo{
+    height: 95%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(248, 255, 236);
+    border-radius: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.armorBlock{
+    width: 95%;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 72, 72, 0.4);
+    border-radius: 20px;
+}
+.armorRow{
+    width: 95%;
+    height:60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+.armorCube{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: bisque;
+}
+.armorCube > input{
+    width: 50px;
+    height: 20px;
+}
+.hitCollum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.diceNdeath{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+.diceBox{
+    width: 45%;
+    height: 95%;
+    background-color: bisque;
+}
+.diceBox >input{
+    width: 90%;
+}
+.weaponBlock{
+    margin-top: 5px;
+    width: 95%;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(230, 72, 72, 0.4);
+    border-radius: 20px;
+}
+.weaponRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+.weaponRow >p {
+    width: 100px;
+}
+.weaponRow >input{
+    width: 100px;
+}
+.moreInfo{
+    width: 95%;
+    height: 80px;
+    
+}
+.moreInfo >input{
+    width: 100%;
+    height: 100%;
+    margin-top: 3px;
+    border-radius: 30px;
+}
+.backpackBlock{
+    margin-top: 5px;
+    width: 95%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    background-color: rgb(230, 72, 72, 0.4);
+    border-radius: 20px;
+}
+.money{
+    width: 20%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:left;
+
+}
+.moneyRow{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    tify-content: center;
+}
+.moneyRow >p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px 5px 5px;
+    margin-right: 5px;
+    background-color: gold;
+    
+    border-radius: 50%;
+}
+.moneyRow >input{
+    width: 50px;
+}
+.items{
+    width: 80%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:left;
+}
+.item{
+    width: 200px;
+    height: 20px;
+}
+/* ////////  */
+.aditionalInfo{
+    width: 25%;
+    height: 95%;
+    border-radius: 30px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+
+}
+.prehistory{
+    height: 35%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+}
+.justText{
+    height: 23%;
+    width: 95%;
+}
+.justText >input{
+    width: 100%;
+    height: 100%;
+}
+.skilsBlock{
+    height: 60%;
+    width: 95%;
+}
+.skilsBox{
+    height: 16%;
+    width: 95%;
+}
+
+
+
+.close{
+    
+    background: transparent;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    transition: 0.2s;
+    right: -40px;
+    top: -50px;
+    z-index: 9;
+}
+
+  
+.close:hover {
+
+    background: burlywood;
+    border: 2px solid burlywood;
+}
+
+    .shadow_pop:hover .close{
+
+    background: burlywood;
+    border: 2px solid burlywood;
+}
+
+.shadow_pop{
+
+    cursor: pointer;
+    position: fixed;
+    opacity: 0;
+    left:-100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    transition: opacity 0.3s ease;
+}
+
+.shadow_pop._active{
+
+    z-index: 6;
+    opacity: 1;
+    left: 0;
+}
