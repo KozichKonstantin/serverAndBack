@@ -5,8 +5,8 @@ const app = express();
 // const morgan = require('morgan');
 const Port = 3500;
 const mysql = require('mysql');
-// const bodyParser = require('body-parser');
-const urlencondedParcer = express.urlencoded({extended: false})
+const bodyParser = require('body-parser');
+const urlencondedParcer = express.urlencoded({extended: false});
 const connection = mysql.createConnection({
     host : "localhost",
     database : "mastersbookdb",
@@ -14,6 +14,9 @@ const connection = mysql.createConnection({
     password : "humansedrexstep",
     port : "3306"
   });
+app.use(express.urlencoded({extended: false}));
+
+// app.use(express.json());
 
 app.use(express.static('views'));
 app.use(express.static('data'));
@@ -29,6 +32,11 @@ app.get('/firstPage', (req,res)=>{
 });
 app.get('/saved', (req,res)=>{
     res.render('secondPage');
+})
+
+app.post('/saveCard', urlencondedParcer, (req,res)=>{
+    console.log(req.body);
+    res.send(req.body);
 })
 // app.post('/saveCard', urlencondedParcer, (req,res) =>{
 //     console.log('azaza');
@@ -61,7 +69,3 @@ app.get('/saved', (req,res)=>{
 //             }
 //                                 })
 // })
-app.post('/saveCard', urlencondedParcer , (req,res)=>{
-    
-    res.send(req.body);
-})
