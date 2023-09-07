@@ -11,7 +11,7 @@ function d(e, t, o, r="") {
 
 
 let cards_grid = document.querySelector(".cards_grid");
-for (let e = 0; e < data.length; e++) d("form", `card${e} card ${data[e].name}`, cards_grid);
+for (let e = 0; e < data.length; e++) d("div", `card${e} card ${data[e].name}`, cards_grid);//form
 
 
 
@@ -19,7 +19,6 @@ let card = document.querySelectorAll(".card");
 for (let e = 0; e < card.length ; e++) {
     d("div", "image_case", card[e])
     d("div", "specs", card[e])
-    card[e].setAttribute('method',"post");
     card[e].action = "/saveCard";
 };
 

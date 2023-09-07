@@ -36,7 +36,7 @@ app.get('/saved', (req,res)=>{
 })
 
 // app.post('/saveCard', jsonParser, (req,res)=>{
-//     console.log(req.body);
+//     console.log(req.body)
 // })
 app.post('/saveCard', jsonParser, (req,res) =>{
     // console.log(req.body[0].valued[0]);
@@ -53,14 +53,14 @@ app.post('/saveCard', jsonParser, (req,res) =>{
     )
 
 
-     let insert = `INSERT INTO hero () VALUES (class, image,strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${req.body[2].class}', '${req.body[1].img}', '${req.body[0].valued[0]}', '${req.body[0].valued[1]}', '${req.body[0].valued[2]}', '${req.body[0].valued[3]}', '${req.body[0].valued[4]}', '${req.body[0].valued[5]}')`;
-    connection.query(insert,(err, result)=>{
+    let insertOne = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${req.body[2].class}', '${req.body[1].img}', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`;
+    // let insertTwo = `INSERT INTO hero (class, image, strength, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES( 'sam', 'som', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`
+    connection.query(insertOne,(err, result)=>{
         console.log(err);
         console.log('/////////');
         console.log(result);
     });
     console.log('result aproved')
-
 
     // connection.end(function(err){
     //         if(err){
