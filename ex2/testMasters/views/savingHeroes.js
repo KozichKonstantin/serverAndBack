@@ -65,7 +65,7 @@ for(let i=0; i< data.length; i++){
 
 
         }
-        return(localStorage.setItem(`card${localStorage.getItem("number") - 1}`, JSON.stringify(savedHeroesBase)), postData('/saveCard', savedHeroesBase));
+        return( postData('/saveCard', savedHeroesBase));
     })
 
 }

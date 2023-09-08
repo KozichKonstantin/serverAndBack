@@ -18,21 +18,30 @@ async function postData(url = "", data = {}) {
             },
         });
         const json = await response.json();
+        for(let i=0; i < localStorage.getItem("number"); i++){
+            localStorage.setItem(`card${i}`, JSON.stringify(json))
+        }
         console.log("Успех:", JSON.stringify(json));
     } 
+
     
-    let postForToServ = {
-        numb : localStorage.getItem('number')
-    }
-    
-    postData('/putCard', postForToServ);
 for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
+    let postForToServ = {
+        numb : i
+    }
+    postData('/putCard', postForToServ);
+}    
     
+for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
+    // let postForToServ = {
+    //     numb : i
+    // }
+    // postData('/putCard', postForToServ);
     let savedBase = JSON.parse(localStorage.getItem(`card${i}`));
-    document.getElementsByClassName('savedCardNameText')[i].textContent = savedBase[2].class ;
-    document.getElementsByClassName('savedCardPictureImg')[i].src = savedBase[1].img+ ".jpg";
-    for(let j=0; j<6; j++){
-        document.getElementsByClassName('savedCardSpecs')[i].children[j].lastChild.textContent = savedBase[0].valued[j];
+    document.getElementsByClassName('savedCardNameText')[i].textContent = savedBase.class ;
+    document.getElementsByClassName('savedCardPictureImg')[i].src = savedBase.image+ ".jpg";
+    for(let j=3; j<9; j++){
+        document.getElementsByClassName('savedCardSpecs')[i].children[j].lastChild.textContent = savedBase.valued[j];
     }
     }
 

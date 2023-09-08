@@ -82,22 +82,18 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
     // let objSended = {};
     let id 
     let select = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero `;
-    
+
     connection.query(select,(err, result)=>{
         console.log(err);
         console.log('/////////');
         console.log('result = ', result[0].id)
         console.log(req.body.numb)
-        // res.send(result[0]);
-        for(let id = result[0].id; id < result[0].id - (-req.body.numb); id ++){
-            console.log('something', id);
-            let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${id}`;
-            connection.query(selectMore, (err, result)=>{
-                console.log(err);
-                console.log('/a/a/a/a/a/a/a/a/a/a//a');
-                console.log('result cycled = ', result[0])
-                res.send(result)
-            })
-        }
+        let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${result[0].id - (- req.body.numb)}`;
+        connection.query(selectMore, (err,result)=>{
+            console.log(err);
+            console.log('/a/a/a/a/a/a/a/a/a');
+            console.log(result[0])
+            res.send(result[0])
+        })
     })
 })
