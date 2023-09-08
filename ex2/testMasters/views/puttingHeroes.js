@@ -1,5 +1,12 @@
-import {data} from './data.js';
-
+// import {data} from './data.js';
+fetch('/putCard').then(function(response){
+    response.json().then(function(data){
+        console.log('data', data);
+    })
+    .catch(function (error){
+        console.log('error', error);
+    })
+})
 
 
 for (let i=0; i<=(localStorage.getItem("number") - 1); i++){

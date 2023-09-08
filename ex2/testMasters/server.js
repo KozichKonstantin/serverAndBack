@@ -70,3 +70,20 @@ app.post('/saveCard', jsonParser, (req,res) =>{
     //         }
     //                             })
 })
+app.get(`/putCard`, (req,res)=>{
+    connection.connect(function(err){
+        if(err){
+        return console.log("blya pizdec")
+        }else{
+        console.log("ne pizdec")
+        }
+    }
+    )
+    let id = 23;
+    let select = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id =${id}`;
+    connection.query(select,(err, result)=>{
+        console.log(err);
+        console.log('/////////');
+        res.send(result[0]);
+    })
+})
