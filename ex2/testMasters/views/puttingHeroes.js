@@ -41,7 +41,7 @@ for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
     document.getElementsByClassName('savedCardNameText')[i].textContent = savedBase.class ;
     document.getElementsByClassName('savedCardPictureImg')[i].src = savedBase.image+ ".jpg";
     for(let j=3; j<9; j++){
-        document.getElementsByClassName('savedCardSpecs')[i].children[j].lastChild.textContent = savedBase.valued[j];
+        document.getElementsByClassName('savedCardSpecs')[i].children[j].lastChild.textContent = savedBase[j];
     }
     }
 
