@@ -52,6 +52,20 @@ async function postData(url = "", data = {}) {
         }
         createAllCardElements('div', `activityButtons_case ${json.id}`, savedCard)
         let activityButtons_case = document.querySelectorAll(`.activityButtons_case`)
+        createAllCardElements('div', `activityButton reedFull ${json.id}`, activityButtons_case)
+        saveCardText = document.querySelectorAll(`.readFull ${json.id}`)
+        saveCardText.setAttribute('src', 'data/addit_images/free-file-icon-1453-thumb.png')
+        createAllCardElements('div', `activityButton printTo ${json.id}`, activityButtons_case)
+        saveCardText = document.querySelectorAll(`.printTo ${json.id}`)
+        createAllCardElements('img', `printToImg ${json.id}`, saveCardText);
+        saveCardText = document.querySelectorAll(`.printToImg ${json.id}`);
+        saveCardText.setAttribute('src', 'data/addit_images/4305625.png');
+        createAllCardElements('div', `activityButton delete ${json.id}`, activityButtons_case )
+        saveCardText= document.querySelectorAll(`.delete ${json.id}`)
+        createAllCardElements('img', `deleteImg`, saveCardText);
+        saveCardText = document.querySelectorAll(`deleteImg`);
+        createAllCardElements('src', 'data/addit_images/3481306.png')
+
 
         console.log("Успех:", JSON.stringify(json));
     } 
