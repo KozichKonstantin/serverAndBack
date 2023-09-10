@@ -33,7 +33,6 @@ for(let e = 0; e < aded.length; e++){
 
 aded = document.querySelectorAll(".specText");
 for (let e = 0; e < aded.length; e++) createElementSecond("h2", `specName`, aded[e], "");
-
 let cardsMassive = document.getElementsByClassName('specText');
 let h2Fills = document.getElementsByClassName('specName');
 for (let i=0; i < cardsMassive.length; i++){
