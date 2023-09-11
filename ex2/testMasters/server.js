@@ -8,6 +8,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const urlencondedParcer = express.urlencoded({extended: false});
 var jsonParser = bodyParser.json()
+
 const connection = mysql.createConnection({
     host : "localhost",
     database : "mastersbookdb",
