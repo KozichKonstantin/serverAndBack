@@ -14,6 +14,7 @@ function createAllCardElements(type, createdClass, place, id="", text=""){
     const createdType = document.createElement(type);
     return createdClass && createdType.classList.add(...createdClass.split(" ")), text && (createdType.textContent = text), place.append(createdType), id && createdType.setAttribute(`id`,`${id}`)
 }
+
 async function postData(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST", 
@@ -94,7 +95,7 @@ for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
     }
     postData('/putCard', postForToServ);
 }    
-    
+
 // for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
     // let postForToServ = {
     //     numb : i
