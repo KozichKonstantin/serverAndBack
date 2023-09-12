@@ -32,13 +32,20 @@ async function postData(url = "", data = {}) {
         let savedCard = document.querySelectorAll(`.savedCard`);
         for(let i=0; i < savedCard.length; i++){
             if (savedCard[i].id == json.id){
-                console.log(savedCard[i].id, 'ada');
+                let cardSpecs = new Object();
+                cardSpecs[0] = json.strength;
+                cardSpecs[1] = json.dexterity;
+                cardSpecs[2] = json.constitution;
+                cardSpecs[3] = json.intelligence;
+                cardSpecs[4] = json.wisdom;
+                cardSpecs[5] = json.charisma;
                 createAllCardElements('div', `savedCardName`, savedCard[i]);
                 let saveCardText =document.querySelectorAll(`.savedCardName`);
-                createAllCardElements('h1', `savedCardNameText`, saveCardText[i]);
+                createAllCardElements('h1', `savedCardNameText`, saveCardText[i], '', `${json.class}`);
                 createAllCardElements('div', `savedCardPicture`, savedCard[i]);
                 saveCardText = document.querySelectorAll(`.savedCardPicture`);
                 createAllCardElements('img', `savedCardPictureImg`, saveCardText[i]);
+                document.querySelectorAll('.savedCardPictureImg')[i].src = json.image + '.jpg';
                 createAllCardElements('div', `savedCardSpecs`, savedCard[i]);
                 saveCardText = document.querySelectorAll(`.savedCardSpecs`);
                 for(let j=0; j < 6; j++){
@@ -47,7 +54,7 @@ async function postData(url = "", data = {}) {
                 for (let j = 0; j < 6; j++){ ///переделать все таким же макаром
                     saveCardText = document.querySelectorAll(`.${stats[j].stat}`);
                     createAllCardElements('h2', 'specName', saveCardText[i], '',  `${stats[j].stat}`)
-                    createAllCardElements('p', `specValue`, saveCardText[i], '', "1")
+                    createAllCardElements('p', `specValue`, saveCardText[i], '', `${cardSpecs[j]}`)
                 }
                 createAllCardElements('div', `activityButtons_case`, savedCard[i])
                 let activityButtons_case = document.querySelectorAll(`.activityButtons_case`)
