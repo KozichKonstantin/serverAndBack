@@ -1,5 +1,6 @@
 // import {data} from './data.js';
 import{stats} from './data.js';
+import { deleting } from './delete.js';
 // fetch('/putCard', function(response){
 //     method: "POST", 
 //     response.json().then(function(data){
@@ -80,11 +81,11 @@ async function postData(url = "", data = {}) {
                 for(let j=0; j < saveCardText.length; j++){
                     saveCardText[j].setAttribute('src', 'data/addit_images/3481306.png')
                 }
+
             }
         }
         
     } 
-
 // console.log("Успех:", JSON.stringify(json));
 
 
@@ -95,7 +96,6 @@ for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
     }
     postData('/putCard', postForToServ);
 }    
-
 // for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
     // let postForToServ = {
     //     numb : i

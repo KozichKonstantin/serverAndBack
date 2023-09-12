@@ -98,3 +98,14 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
         })
     })
 })
+app.post('/deleteCard', (res,req)=>{
+    // connection.connect(function(err){
+    //     if(err){
+    //     return console.log("blya pizdec")
+    //     }else{
+    //     console.log("ne pizdec")
+    //     }
+    // })
+
+    res.send('log');
+})
