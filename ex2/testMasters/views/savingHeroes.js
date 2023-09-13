@@ -35,12 +35,6 @@ for (let i=0; i < data.length; i++){
     )
 }
 
-
-
-
-// localStorage.clear();
-
-
 let valued = [];
 let savedHeroesBase = {};
 

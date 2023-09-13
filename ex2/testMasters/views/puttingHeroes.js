@@ -1,15 +1,4 @@
-// import {data} from './data.js';
 import{stats} from './data.js';
-// fetch('/putCard', function(response){
-//     method: "POST", 
-//     response.json().then(function(data){
-        
-//         console.log('data', data);
-//     })
-//     .catch(function (error){
-//         console.log('error', error);
-//     })
-// })
 function createAllCardElements(type, createdClass, place, id="", text=""){
     const createdType = document.createElement(type);
     return createdClass && createdType.classList.add(...createdClass.split(" ")), text && (createdType.textContent = text), place.append(createdType), id && createdType.setAttribute(`id`,`${id}`)
@@ -24,10 +13,7 @@ async function postData(url = "", data = {}) {
             },
         });
         const json = await response.json();
-        // for(let i=0; i < localStorage.getItem("number"); i++){
-        // localStorage.setItem(`card${json.id}`, JSON.stringify(json))
-        // }
-        
+
         let savedList = document.querySelector(".savedList");
         createAllCardElements('div', `savedCard`, savedList, `${json.id}`);
         let savedCard = document.querySelectorAll(`.savedCard`);
@@ -87,23 +73,6 @@ async function postData(url = "", data = {}) {
         console.log('puted')
     } 
 // console.log("Успех:", JSON.stringify(json));
-// async function deletingFunction(){
-//     let deleteButton = await document.querySelectorAll(".delete")
-//         for ( let i =0; i < deleteButton.length; i++){
-//             deleteButton[i].addEventListener('click', ()=>{
-//                 console.log('deleting')
-//                 let cards = deleteButton[i].parentNode.parentNode;
-//                         let number = deleteButton[i].parentNode.parentNode.className.toString().slice(10 , cards.length);
-//                         cards.classList.add("none");
-//                             console.log('deleting');
-//                             console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id)
-//                             deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id)
-                            
-//             })
-//         }
-// }
-
-
 
 for (let i =0; i < 1; i++){
     for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
@@ -114,71 +83,14 @@ for (let i =0; i < 1; i++){
         
         
     }    
-    let deleteButton = document.querySelectorAll(".delete")
-    console.log(deleteButton, 'sasai')
+    let deleteButton = document.querySelectorAll(".delete");
         for ( let i =0; i < deleteButton.length; i++){
             deleteButton[i].addEventListener('click', ()=>{
                 console.log('deleting')
                 let cards = deleteButton[i].parentNode.parentNode;
-                        let number = deleteButton[i].parentNode.parentNode.className.toString().slice(10 , cards.length);
                         cards.classList.add("none");
-                            console.log('deleting');
-                            console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id)
-                            deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id)
-                            
+                        console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id);
+                        deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id);
             })
         }
 }
-// querySelectorAll('.savedCard')[0].addEventListener('click', )
-// for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
-    // let postForToServ = {
-    //     numb : i
-    // }
-    // postData('/putCard', postForToServ);
-    // let savedBase = JSON.parse(localStorage.getItem(`card${i}`));
-    // document.getElementsByClassName('savedCardNameText')[i].textContent = savedBase.class ;
-    // document.getElementsByClassName('savedCardPictureImg')[i].src = savedBase.image+ ".jpg";
-    // for(let j=3; j<9; j++){
-    //     document.getElementsByClassName('savedCardSpecs')[i].children[j].lastChild.textContent = savedBase[j];
-    // }
-    // }
-
-
-
-
-
-
-    // function createElementSecond(e, t, o, r="") {
-    //     const l = document.createElement(e);
-    //     return t && l.classList.add(...t.split(" ")),r && (l.textContent = r), o.append(l)
-    // }
-    // let savedlist = document.querySelector(".savedList");
-    // createElementSecond("div", `savedCard ${e}`, savedlist);
-    // let savecard = document.querySelectorAll(".savedCard");
-    // createElementSecond("div", `savedCardName`, savecard[e]);
-    // let aded = document.querySelectorAll(".savedCardName");
-    // createElementSecond("h1", `savedCardNameText`, aded[e]);
-    // createElementSecond("div", `savedCardPicture`, savecard[e]);
-    // aded = document.querySelectorAll(".savedCardPicture");
-    // createElementSecond("img", `savedCardPictureImg`, aded[e]);
-    // createElementSecond("div", `savedCardSpecs`, savecard[e]);
-    // aded = document.querySelectorAll(".savedCardSpecs");
-    // for(let i = 0; i< 6; i++){
-    //     createElementSecond("div", `specText ${stats[i].stat}`, aded[e]);
-    // }
-    // aded = document.querySelectorAll(".specText");
-    // createElementSecond("h2", `specName`, aded[e], "");
-    // let cardsMassive = document.getElementsByClassName('specText');
-    // let h2Fills = document.getElementsByClassName('specName');
-    // for (let i=0; i < cardsMassive.length; i++){
-    //     h2Fills[i].textContent = cardsMassive[i].classList.toString().substring(9);
-    // }
-    // createElementSecond("p", `specValue`, aded[e], "1");
-    // createElementSecond("div", `activityButtons_case`, savecard[e]);
-    // let activityButtons_case = document.querySelectorAll(".activityButtons_case");
-    // createElementSecond("div", `activityButton reedFull`, activityButtons_case[e]);
-    // aded = document.querySelectorAll(".reedFull");
-    // createElementSecond("img", `reedFullImg`, aded[e]);
-    // aded = document.querySelectorAll(".reedFullImg");
-    // aded[i].setAttribute('src', 'data/addit_images/free-file-icon-1453-thumb.png');
-    
