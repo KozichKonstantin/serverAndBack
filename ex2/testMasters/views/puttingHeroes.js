@@ -1,6 +1,5 @@
 // import {data} from './data.js';
 import{stats} from './data.js';
-import { deleting } from './delete.js';
 // fetch('/putCard', function(response){
 //     method: "POST", 
 //     response.json().then(function(data){
@@ -76,6 +75,7 @@ async function postData(url = "", data = {}) {
                 }
                 createAllCardElements('div', `activityButton delete`, activityButtons_case[i] )
                 saveCardText= document.querySelectorAll(`.delete`)
+                
                 createAllCardElements('img', `deleteImg`, saveCardText[i]);
                 saveCardText = document.querySelectorAll(`.deleteImg`);
                 for(let j=0; j < saveCardText.length; j++){
@@ -84,18 +84,52 @@ async function postData(url = "", data = {}) {
 
             }
         }
-        
+        console.log('puted')
     } 
 // console.log("Успех:", JSON.stringify(json));
+// async function deletingFunction(){
+//     let deleteButton = await document.querySelectorAll(".delete")
+//         for ( let i =0; i < deleteButton.length; i++){
+//             deleteButton[i].addEventListener('click', ()=>{
+//                 console.log('deleting')
+//                 let cards = deleteButton[i].parentNode.parentNode;
+//                         let number = deleteButton[i].parentNode.parentNode.className.toString().slice(10 , cards.length);
+//                         cards.classList.add("none");
+//                             console.log('deleting');
+//                             console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id)
+//                             deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id)
+                            
+//             })
+//         }
+// }
 
 
 
-for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
-    let postForToServ = {
-        numb : i
-    }
-    postData('/putCard', postForToServ);
-}    
+for (let i =0; i < 1; i++){
+    for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
+        let postForToServ = {
+            numb : i
+        }
+        postData('/putCard', postForToServ);
+        
+        
+    }    
+    let deleteButton = document.querySelectorAll(".delete")
+    console.log(deleteButton, 'sasai')
+        for ( let i =0; i < deleteButton.length; i++){
+            deleteButton[i].addEventListener('click', ()=>{
+                console.log('deleting')
+                let cards = deleteButton[i].parentNode.parentNode;
+                        let number = deleteButton[i].parentNode.parentNode.className.toString().slice(10 , cards.length);
+                        cards.classList.add("none");
+                            console.log('deleting');
+                            console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id)
+                            deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id)
+                            
+            })
+        }
+}
+// querySelectorAll('.savedCard')[0].addEventListener('click', )
 // for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
     // let postForToServ = {
     //     numb : i

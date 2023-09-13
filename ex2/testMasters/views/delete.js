@@ -1,18 +1,32 @@
-// let doc = document.querySelectorAll(".delete")
-// console.log(doc)
-async function deleting(url= "", data = {}){
-    let doc = document.querySelectorAll(".delete")
-    console.log(doc)
+async function deleteing(url = "", data = {}) {
     const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    const json = await response.json();
+      method: "POST", 
+       body: JSON.stringify(data), 
+    headers: {
+      "Content-Type": "application/json",
+            },
+        });
+        const json = await response.json();
+    }
 
+function test() {
+    let deleteBtn = document.querySelectorAll(".delete")
+    console.log(deleteBtn)
+    console.log(deleteBtn.length)
+    for(let i =0; i < deleteBtn.length; i++){
+        doc[i].addEventListener('click', ()=>{
+            let cards = deleteBtn[i].parentNode.parentNode;
+                cards.classList.add("none");
+                console.log('deleting');
+                console.log('deletedBtn id = ', deleteBtn[i].parentNode.parentNode.id)
+                deleting('/deleteCard', deleteBtn[i].parentNode.parentNode.id)
+            
+        })
+    }
 }
+
+setTimeout(test, 500)
+
 
 // for(let i = 0; i< delete_btn.length; i++){
 //     delete_btn[i].addEventListener('click', function() {
