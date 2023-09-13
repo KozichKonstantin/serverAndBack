@@ -81,7 +81,6 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
     }
     )
     // let objSended = {};
-    let id 
     let select = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero `;
 
     connection.query(select,(err, result)=>{
@@ -98,14 +97,23 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
         })
     })
 })
-app.post('/deleteCard', (res,req)=>{
-    // connection.connect(function(err){
-    //     if(err){
-    //     return console.log("blya pizdec")
-    //     }else{
-    //     console.log("ne pizdec")
-    //     }
-    // })
+app.post('/deleteCard', jsonParser, (req,res)=>{
+    connection.connect(function(err){
+        if(err){
+        return console.log("blya pizdec")
+        }else{
+        console.log("ne pizdec")
+        }
+    }
+    )
+    console.log ('reqis=', req.body.id)
+    let deletingId = `DELETE FROM hero WHERE id = ${req.body.id}`
+    connection.query(deletingId, (err, result)=>{
+        console.log(err);
+        console.log('\\\\\\');
+        
+    })
 
-    res.send('log');
+
+    res.end;
 })

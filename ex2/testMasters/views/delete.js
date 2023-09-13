@@ -1,4 +1,4 @@
-async function deleteing(url = "", data = {}) {
+async function deleting(url = "", data = {}) {
     const response = await fetch(url, {
       method: "POST", 
        body: JSON.stringify(data), 
@@ -6,7 +6,7 @@ async function deleteing(url = "", data = {}) {
       "Content-Type": "application/json",
             },
         });
-        const json = await response.json();
+        // const json = await response;
     }
 
 function test() {
@@ -14,12 +14,14 @@ function test() {
     console.log(deleteBtn)
     console.log(deleteBtn.length)
     for(let i =0; i < deleteBtn.length; i++){
-        doc[i].addEventListener('click', ()=>{
+        deleteBtn[i].addEventListener('click', ()=>{
             let cards = deleteBtn[i].parentNode.parentNode;
                 cards.classList.add("none");
                 console.log('deleting');
                 console.log('deletedBtn id = ', deleteBtn[i].parentNode.parentNode.id)
-                deleting('/deleteCard', deleteBtn[i].parentNode.parentNode.id)
+                let cardId = new Object();
+                cardId.id = deleteBtn[i].parentNode.parentNode.id;
+                return(deleting('/deleteCard', cardId))
             
         })
     }
