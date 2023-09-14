@@ -3,7 +3,6 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const morgan = require('morgan');
 const Port = 3000;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');

@@ -126,8 +126,27 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
     res.end;
 })
 app.post ('/login/loginSucces', (req,res) => {
+    let selectMore =`SELECT password FROM user WHERE login = ${req.body.login}`;
+    connection.connect(function(err){
+        if(err){
+        return console.log("blya pizdec")
+        }else{
+        console.log("ne pizdec")
+        }
+    }
+    )
+    connection.query(selectMore, (err, result)=>{
+        console.log(err);
+        if (result[0].password == req.body.password){
+            console.log('succes', result[0].password)
+            res.render('finish');
+        }
+        else{
+            console.log('error', result)
+            res.end;
+        }
+    })
     
-    res.render('finish')
 })
 app.post ('/registrationPage/registrationSucces', (req,res) => {
     let registrateNew = `INSERT INTO user (login, password) VALUES ( '${req.body.login}', ${req.body.password} )`
