@@ -126,10 +126,22 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
     res.end;
 })
 app.post ('/login/loginSucces', (req,res) => {
-
+    
     res.render('finish')
 })
 app.post ('/registrationPage/registrationSucces', (req,res) => {
-
+    let registrateNew = `INSERT INTO user (login, password) VALUES ( '${req.body.login}', ${req.body.password} )`
+    connection.connect(function(err){
+        if(err){
+        return console.log("blya pizdec")
+        }else{
+        console.log("ne pizdec")
+        }
+    }
+    )
+    connection.query(registrateNew, (err, result)=>{
+        console.log(err);
+        console.log('added user name =', req.body.login)
+    })
     res.render('finish')
 })
