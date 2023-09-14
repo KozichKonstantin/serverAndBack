@@ -35,7 +35,15 @@ app.get('/firstPage', (req,res)=>{
 app.get('/saved', (req,res)=>{
     res.render('secondPage');
 })
-
+app.get('/registration', (req,res)=>{
+    res.render('registration');
+})
+app.get('/loginPage', (req,res)=>{
+    res.render('loginPage');
+})
+app.get('/registrationPage', (req,res)=>{
+    res.render('registrationPage');
+})
 // app.post('/saveCard', jsonParser, (req,res)=>{
 //     console.log(req.body)
 // })
@@ -116,4 +124,12 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
 
 
     res.end;
+})
+app.post ('/login/loginSucces', (req,res) => {
+
+    res.render('finish')
+})
+app.post ('/registrationPage/registrationSucces', (req,res) => {
+
+    res.render('finish')
 })
