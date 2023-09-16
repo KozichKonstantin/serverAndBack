@@ -6,7 +6,7 @@ const Port = 3500;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const urlencondedParcer = express.urlencoded({extended: false});
-var jsonParser = bodyParser.json()
+var jsonParser = bodyParser.json();
 
 const connection = mysql.createConnection({
     host : "localhost",
@@ -46,36 +46,41 @@ app.post('/saveCard', jsonParser, (req,res) =>{
 
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec")
+        return console.log("blya pizdec");
         }else{
-        console.log("ne pizdec")
+        console.log("ne pizdec");
         }
     }
     )
-
-    connection.query(insertOne,(err, result)=>{
     let insertOne = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${req.body[2].class}', '${req.body[1].img}', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`;
+   
+    connection.query(insertOne,(err, result)=>{
     // let insertTwo = `INSERT INTO hero (class, image, strength, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES( 'sam', 'som', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`
+    let upcomingCardId = result.insertId;
     let cardsId = [];
-    let getUserCards = `SELECT cardsCount FROM user WHERE login = '${req.body[3].user}'`///это все хуета, надо засунуть в второй конекшен
+    let currentUser = req.body[3].user;
+    let getUserCards = `SELECT cardsCount FROM user WHERE login = '${req.body[3].user}'`;///это все хуета, надо засунуть в второй конекшен
     connection.query(getUserCards, (err, result) =>{
-        console.log(err)
-        if (result[0].cardsCount == null){
-            console.log(req.body)
-            let incertCard = `UPDATE user SET cardsCount = ${cardsId}  WHERE id = '${result.insertId}'`
+            if(result[0].cardsCount != null){
+                cardsId = JSON.parse(result[0].cardsCount);
+            }
+            cardsId.push(upcomingCardId);
+            console.log(cardsId);
+            let incertCard = `UPDATE user SET cardsCount = '${JSON.stringify(cardsId)}'  WHERE login = '${currentUser}'`;
             connection.query( incertCard, (err, result) =>{
                 console.log(err);
-                console.log('result created', result)
+                console.log('result created', result);
             })
-        }else{
-            cardsId = result[0].cardsCount;
-            cardsId.push(req.body[3].id);
-            let incertCard = `UPDATE user SET cardsCount = ${cardsId}  WHERE id = '${result.insertId}'`
-            connection.query( incertCard, (err, result) =>{
-                console.log(err);
-                console.log('result added', result)
-            })
-        }
+        // }else{
+            // cardsId = result[0].cardsCount;
+            // cardsId.push(req.body[3].id);
+            // let incertCard = `UPDATE user SET cardsCount = ${cardsId}  WHERE login = '${currentUser}'`
+            // connection.query( incertCard, (err, result) =>{
+            //     console.log(err);
+            //     console.log('result added', result)
+            // })
+        //     console.log('it will be push')
+        // }
     })
     
 
@@ -93,9 +98,9 @@ app.post('/saveCard', jsonParser, (req,res) =>{
 app.post(`/putCard`, jsonParser, (req,res)=>{
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec")
+        return console.log("blya pizdec");
         }else{
-        console.log("ne pizdec")
+        console.log("ne pizdec");
         }
     }
     )
@@ -104,28 +109,28 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
     connection.query(select,(err, result)=>{
         console.log(err);
         console.log('/////////');
-        console.log('result = ', result[0].id)
-        console.log(req.body.numb)
+        console.log('result = ', result[0].id);
+        console.log(req.body.numb);
         let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${result[0].id - (- req.body.numb)}`;
         connection.query(selectMore, (err,result)=>{
             console.log(err);
             console.log('/a/a/a/a/a/a/a/a/a');
-            console.log(result[0])
-            res.send(result[0])
+            console.log(result[0]);
+            res.send(result[0]);
         })
     })
 })
 app.post('/deleteCard', jsonParser, (req,res)=>{
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec")
+        return console.log("blya pizdec");
         }else{
-        console.log("ne pizdec")
+        console.log("ne pizdec");
         }
     }
     )
-    console.log ('reqis=', req.body.id)
-    let deletingId = `DELETE FROM hero WHERE id = ${req.body.id}`
+    console.log ('reqis=', req.body.id);
+    let deletingId = `DELETE FROM hero WHERE id = ${req.body.id}`;
     connection.query(deletingId, (err, result)=>{
         console.log(err);
         console.log('\\\\\\');
@@ -139,9 +144,9 @@ app.post ('/login/loginSucces', (req,res) => {
     let selectMore =`SELECT password FROM user WHERE login = '${req.body.login}'`;
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec")
+        return console.log("blya pizdec");
         }else{
-        console.log("ne pizdec")
+        console.log("ne pizdec");
         }
     }
     )
@@ -153,7 +158,7 @@ app.post ('/login/loginSucces', (req,res) => {
             res.render('finish');
         }
         else{
-            console.log('error', result)
+            console.log('error', result);
             res.end;
         }
     })
@@ -163,39 +168,39 @@ app.post('/login/saveLogin',jsonParser, (req,res)=>{
     let selectMore =`SELECT password FROM user WHERE login = '${req.body.login}'`;
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec")
+        return console.log("blya pizdec");
         }else{
-        console.log("ne pizdec")
+        console.log("ne pizdec");
         }
     })
     connection.query(selectMore, (err, result)=>{
         console.log(err);
-        console.log(req.body)
+        console.log(req.body);
         if (result[0].password == req.body.password){
             console.log('sending login', req.body.login);
             let obj = new Object();
             obj.login = req.body.login;
-            res.send(JSON.stringify(obj))
+            res.send(JSON.stringify(obj));
         }
         else{
-            console.log('error', result)
+            console.log('error', result);
             res.end;
         }
     })
 })
 app.post ('/registrationPage/registrationSucces', (req,res) => {
-    let registrateNew = `INSERT INTO user (login, password) VALUES ( '${req.body.login}', '${req.body.password}' )`
+    let registrateNew = `INSERT INTO user (login, password) VALUES ( '${req.body.login}', '${req.body.password}' )`;
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec")
+        return console.log("blya pizdec");
         }else{
-        console.log("ne pizdec")
+        console.log("ne pizdec");
         }
     }
     )
     connection.query(registrateNew, (err, result)=>{
         console.log(err);
-        console.log('added user name =', req.body.login)
+        console.log('added user name =', req.body.login);
     })
-    res.render('finish')
+    res.render('finish');
 })

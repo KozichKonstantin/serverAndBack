@@ -16,8 +16,7 @@ async function postData(url = "", data = {}) {
       "Content-Type": "application/json",
             },
         });
-        const json = await response.json();
-        console.log("Успех:", JSON.stringify(json));
+        // const json = await response.json();
     } 
 
 let savingHeroesButtons = document.getElementsByClassName('saveHero');
@@ -56,7 +55,6 @@ for(let i=0; i< data.length; i++){
                         {"class" : `${savedClass}`},
                         {'user': `${localStorage.getItem('login')}`}
                             ]
-                        console.log(savedHeroesBase)
             }
 
 
