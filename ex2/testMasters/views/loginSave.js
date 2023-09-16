@@ -6,8 +6,8 @@ async function loginSave(url = "", data = {}) {
       "Content-Type": "application/json",
             },
         });
-        const json = await response;
-        localStorage.setItem('login', `${JSON.stringify(json)}`)
+        const json = await response.json();
+        localStorage.setItem('login', json.login)
     }
     let obj = new Object();
 document.querySelector(".subButton").addEventListener("click", ()=>{

@@ -163,7 +163,9 @@ app.post('/login/saveLogin',jsonParser, (req,res)=>{
         console.log(req.body)
         if (result[0].password == req.body.password){
             console.log('sending login', req.body.login);
-            res.send(req.body.login)
+            let obj = new Object();
+            obj.login = req.body.login;
+            res.send(JSON.stringify(obj))
         }
         else{
             console.log('error', result)
