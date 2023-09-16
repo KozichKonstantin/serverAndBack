@@ -8,9 +8,10 @@ async function loginSave(url = "", data = {}) {
         });
         const json = await response;
     }
-let obj = new Object();
-obj.login = document.getElementsByName('login').textcontent;
-obj.password = document.getElementsByName('password').textcontent;
+    let obj = new Object();
 document.querySelector(".subButton").addEventListener("click", ()=>{
+    obj.login = document.getElementsByName('login').value;
+    obj.password = document.getElementsByName('password');
+    console.log(obj)
     loginSave('/login/saveLogin', obj)
 })

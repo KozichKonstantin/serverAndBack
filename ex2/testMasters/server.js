@@ -160,7 +160,7 @@ app.post('/login/saveLogin',jsonParser, (req,res)=>{
     })
     connection.query(selectMore, (err, result)=>{
         console.log(err);
-        console.log(req.body)
+        console.log(req)
         if (result[0].password == req.body.password){
             console.log('sending login', result[0].password);
             
