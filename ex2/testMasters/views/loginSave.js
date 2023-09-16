@@ -7,11 +7,13 @@ async function loginSave(url = "", data = {}) {
             },
         });
         const json = await response;
+        localStorage.setItem('login', `${JSON.stringify(json)}`)
     }
     let obj = new Object();
 document.querySelector(".subButton").addEventListener("click", ()=>{
-    obj.login = document.getElementsByName('login').value;
-    obj.password = document.getElementsByName('password');
-    console.log(obj)
+    obj.login = document.getElementsByName('login')[0].value;
+    obj.password = document.getElementsByName('password')[0].value;
+    
+    // console.log(obj)
     loginSave('/login/saveLogin', obj)
 })
