@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-// const morgan = require('morgan');
 const Port = 3500;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
@@ -17,9 +16,6 @@ const connection = mysql.createConnection({
     port : "3306"
   });
 app.use(express.urlencoded({extended: false}));
-
-// app.use(express.json());
-
 app.use(express.static('views'));
 app.use(express.static('data'));
 app.listen(Port, (error) =>{
@@ -44,11 +40,7 @@ app.get('/loginPage', (req,res)=>{
 app.get('/registrationPage', (req,res)=>{
     res.render('registrationPage');
 })
-// app.post('/saveCard', jsonParser, (req,res)=>{
-//     console.log(req.body)
-// })
 app.post('/saveCard', jsonParser, (req,res) =>{
-    // console.log(req.body[0].valued[0]);
     if(!req.body) return res.sendStatus(400);
 
 
@@ -61,37 +53,43 @@ app.post('/saveCard', jsonParser, (req,res) =>{
     }
     )
 
-    let getId 
+    connection.query(insertOne,(err, result)=>{
     let insertOne = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${req.body[2].class}', '${req.body[1].img}', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`;
     // let insertTwo = `INSERT INTO hero (class, image, strength, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES( 'sam', 'som', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`
-    
-    let getUserCards = `SELECT cardsCount FROM user WHERE login = ${req.body[3].login}`///это все хуета, надо засунуть в второй конекшен
     let cardsId = [];
-    if (getUserCards == null){
-        
-    }
+    let getUserCards = `SELECT cardsCount FROM user WHERE login = '${req.body[3].user}'`///это все хуета, надо засунуть в второй конекшен
+    connection.query(getUserCards, (err, result) =>{
+        console.log(err)
+        if (result[0].cardsCount == null){
+            console.log(req.body)
+            let incertCard = `UPDATE user SET cardsCount = ${cardsId}  WHERE id = '${result.insertId}'`
+            connection.query( incertCard, (err, result) =>{
+                console.log(err);
+                console.log('result created', result)
+            })
+        }else{
+            cardsId = result[0].cardsCount;
+            cardsId.push(req.body[3].id);
+            let incertCard = `UPDATE user SET cardsCount = ${cardsId}  WHERE id = '${result.insertId}'`
+            connection.query( incertCard, (err, result) =>{
+                console.log(err);
+                console.log('result added', result)
+            })
+        }
+    })
+    
 
-
-
-
-    let insertTwo = `INSERT INTO user () VALUES (''})`
-    connection.query(insertOne,(err, result)=>{
         console.log(err);
         console.log('/////////');
         console.log( result);
-        
-        console.log( result.insertId)
+        console.log( result.insertId);
     });
-    console.log('result aproved')
-
-    // connection.end(function(err){
-    //         if(err){
-    //             return console.log("blya pizdec")
-    //         }else{
-    //             console.log("ne pizdec")
-    //         }
-    //                             })
+    console.log('result aproved');
 })
+
+
+
+
 app.post(`/putCard`, jsonParser, (req,res)=>{
     connection.connect(function(err){
         if(err){
@@ -101,7 +99,6 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
         }
     }
     )
-    // let objSended = {};
     let select = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero `;
 
     connection.query(select,(err, result)=>{
