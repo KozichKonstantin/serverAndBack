@@ -61,13 +61,26 @@ app.post('/saveCard', jsonParser, (req,res) =>{
     }
     )
 
-
+    let getId 
     let insertOne = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${req.body[2].class}', '${req.body[1].img}', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`;
     // let insertTwo = `INSERT INTO hero (class, image, strength, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES( 'sam', 'som', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`
+    
+    let getUserCards = `SELECT cardsCount FROM user WHERE login = ${req.body[3].login}`///это все хуета, надо засунуть в второй конекшен
+    let cardsId = [];
+    if (getUserCards == null){
+        
+    }
+
+
+
+
+    let insertTwo = `INSERT INTO user () VALUES (''})`
     connection.query(insertOne,(err, result)=>{
         console.log(err);
         console.log('/////////');
-        console.log(result);
+        console.log( result);
+        
+        console.log( result.insertId)
     });
     console.log('result aproved')
 
