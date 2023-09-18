@@ -109,16 +109,35 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
     connection.query(select,(err, result)=>{
         console.log(err);
         console.log('/////////');
-        console.log('result = ', result[0].id);
-        console.log(req.body.numb);
-        let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${result[0].id - (- req.body.numb)}`;
-        connection.query(selectMore, (err,result)=>{
-            console.log(err);
-            console.log('/a/a/a/a/a/a/a/a/a');
-            console.log(result[0]);
-            res.send(result[0]);
+        // console.log('result = ', result[0].id);
+        console.log(req.body.login, 'login is');
+        let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
+        connection.query(getCardsId, (err, result)=>{
+            let cardsArr = JSON.parse(result[0].cardsCount);
+            for(let i=0; i < cardsArr.length; i++){
+                // console.log(cardsArr[i]);
+                let selectCurrent = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${cardsArr[i]}`;
+                connection.query(selectCurrent, (err, result)=>{
+                    let allCards = [];
+                    allCards.push(result[0])
+                    
+                })
+            }
+            console.log(allCards, i)
         })
+
+
+
+
+        // let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${result[id][i]}`;
+        // connection.query(selectMore, (err,result)=>{
+        //     console.log(err);
+        //     console.log('/a/a/a/a/a/a/a/a/a');
+        //     console.log(result[0]);
+        //     res.send(result[0]);
+        // })
     })
+    res.end;
 })
 app.post('/deleteCard', jsonParser, (req,res)=>{
     connection.connect(function(err){

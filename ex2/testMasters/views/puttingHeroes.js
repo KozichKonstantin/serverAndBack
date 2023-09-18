@@ -75,22 +75,20 @@ async function postData(url = "", data = {}) {
 // console.log("Успех:", JSON.stringify(json));
 
 for (let i =0; i < 1; i++){
-    for (let i=0; i<=(localStorage.getItem("number") - 1); i++){
+        let userLogin = localStorage.getItem('login');
         let postForToServ = {
-            numb : i
+            login: userLogin
         }
         postData('/putCard', postForToServ);
         
-        
-    }    
     let deleteButton = document.querySelectorAll(".delete");
-        for ( let i =0; i < deleteButton.length; i++){
-            deleteButton[i].addEventListener('click', ()=>{
-                console.log('deleting')
-                let cards = deleteButton[i].parentNode.parentNode;
-                        cards.classList.add("none");
-                        console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id);
-                        deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id);
-            })
-        }
+    for ( let i =0; i < deleteButton.length; i++){
+        deleteButton[i].addEventListener('click', ()=>{
+            console.log('deleting')
+            let cards = deleteButton[i].parentNode.parentNode;
+                    cards.classList.add("none");
+                    console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id);
+                    deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id);
+        })
+    }
 }
