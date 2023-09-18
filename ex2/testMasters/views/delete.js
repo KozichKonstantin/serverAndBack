@@ -9,7 +9,7 @@ async function deleting(url = "", data = {}) {
         // const json = await response;
     }
 
-function test() {
+
     let deleteBtn = document.querySelectorAll(".delete")
     console.log(deleteBtn)
     console.log(deleteBtn.length)
@@ -21,13 +21,14 @@ function test() {
                 console.log('deletedBtn id = ', deleteBtn[i].parentNode.parentNode.id)
                 let cardId = new Object();
                 cardId.id = deleteBtn[i].parentNode.parentNode.id;
+                cardId.login = localStorage.getItem('login');
                 return(deleting('/deleteCard', cardId))
             
         })
     }
-}
 
-setTimeout(test, 500)
+
+// setTimeout(test, 2000)
 
 
 // for(let i = 0; i< delete_btn.length; i++){

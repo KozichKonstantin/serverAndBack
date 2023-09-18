@@ -29,7 +29,8 @@ for (let i=0; i < data.length; i++){
 
         let number =  localStorage.getItem('number') - (-1);
         localStorage.setItem('number',`${number}`)
-            d("h2", 'message', elementsMassive, "NEW")} 
+            d("h2", 'message', elementsMassive, "NEW")
+    } 
             
     )
 }

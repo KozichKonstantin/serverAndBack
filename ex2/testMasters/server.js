@@ -64,12 +64,12 @@ app.post('/saveCard', jsonParser, (req,res) =>{
             if(result[0].cardsCount != null){
                 cardsId = JSON.parse(result[0].cardsCount);
             }
-            cardsId.push(upcomingCardId);
+            cardsId.push(upcomingCardId); 
             console.log(cardsId);
             let incertCard = `UPDATE user SET cardsCount = '${JSON.stringify(cardsId)}'  WHERE login = '${currentUser}'`;
             connection.query( incertCard, (err, result) =>{
                 console.log(err);
-                console.log('result created', result);
+                // console.log('result created', result);
             })
         // }else{
             // cardsId = result[0].cardsCount;
@@ -85,11 +85,11 @@ app.post('/saveCard', jsonParser, (req,res) =>{
     
 
         console.log(err);
-        console.log('/////////');
-        console.log( result);
-        console.log( result.insertId);
+        // console.log('/////////');
+        // console.log( result);
+        // console.log( result.insertId);
     });
-    console.log('result aproved');
+    // console.log('result aproved');
 })
 
 
@@ -108,27 +108,28 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
 
     connection.query(select,(err, result)=>{
         console.log(err);
-        console.log('/////////');
+        // console.log('/////////');
         // console.log('result = ', result[0].id);
-        console.log(req.body.login, 'login is');
+        // console.log(req.body.login, 'login is');
         let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
         connection.query(getCardsId, (err, result)=>{
             let cardsArr = JSON.parse(result[0].cardsCount);
+            let allCards = [];
             for(let i=0; i < cardsArr.length; i++){
                 // console.log(cardsArr[i]);
                 let selectCurrent = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${cardsArr[i]}`;
                 connection.query(selectCurrent, (err, result)=>{
-                    let allCards = [];
-                    allCards.push(result[0])
-                    
+                    // let parced = JSON.stringify(result[0]);
+                    allCards.push(result[0]);
+                    // console.log(allCards);
+                    if (i == (cardsArr.length - 1)){  
+                        res.send(JSON.stringify(allCards))
+                    }
                 })
             }
-            console.log(allCards, i)
+            
+            
         })
-
-
-
-
         // let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${result[id][i]}`;
         // connection.query(selectMore, (err,result)=>{
         //     console.log(err);
@@ -137,7 +138,6 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
         //     res.send(result[0]);
         // })
     })
-    res.end;
 })
 app.post('/deleteCard', jsonParser, (req,res)=>{
     connection.connect(function(err){
@@ -150,10 +150,25 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
     )
     console.log ('reqis=', req.body.id);
     let deletingId = `DELETE FROM hero WHERE id = ${req.body.id}`;
-    connection.query(deletingId, (err, result)=>{
+    
+    console.log('reques', req.body);
+    connection.query(deletingId, (err, result)=>{ 
         console.log(err);
         console.log('\\\\\\');
-        
+        let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
+        connection.query(getCardsId, (err, result)=>{
+            let cardsArr = result[0];
+            for (let i =0 ; i < cardsArr.length; i++){
+                console.log(cardsArr[i], 'lalka')
+                if (cardsArr[i] == req.body.id){
+                    cardsArr[i]= null;
+                    let updateMem = `UPDATE user SET cardsCount= '${JSON.stringify(cardsArr)}' WHERE login = '${req.body.login}'`;
+                    connection.query(updateMem, (err, result)=>{
+                        console.log(result, 'updating');
+                    })
+                }
+            }
+        })
     })
 
 
@@ -172,7 +187,7 @@ app.post ('/login/loginSucces', (req,res) => {
     connection.query(selectMore, (err, result)=>{
         console.log(err);
         if (result[0].password == req.body.password){
-            console.log('succes', result[0].password);
+            // console.log('succes', result[0].password);
             
             res.render('finish');
         }

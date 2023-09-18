@@ -13,26 +13,28 @@ async function postData(url = "", data = {}) {
             },
         });
         const json = await response.json();
-
+        console.log(json);
         let savedList = document.querySelector(".savedList");
-        createAllCardElements('div', `savedCard`, savedList, `${json.id}`);
+
+        for(let k = 0; k < json.length; k++){
+        createAllCardElements('div', `savedCard`, savedList, `${json[k].id}`);
         let savedCard = document.querySelectorAll(`.savedCard`);
         for(let i=0; i < savedCard.length; i++){
-            if (savedCard[i].id == json.id){
+            if (savedCard[i].id == json[k].id){
                 let cardSpecs = new Object();
-                cardSpecs[0] = json.strength;
-                cardSpecs[1] = json.dexterity;
-                cardSpecs[2] = json.constitution;
-                cardSpecs[3] = json.intelligence;
-                cardSpecs[4] = json.wisdom;
-                cardSpecs[5] = json.charisma;
+                cardSpecs[0] = json[k].strength;
+                cardSpecs[1] = json[k].dexterity;
+                cardSpecs[2] = json[k].constitution;
+                cardSpecs[3] = json[k].intelligence;
+                cardSpecs[4] = json[k].wisdom;
+                cardSpecs[5] = json[k].charisma;
                 createAllCardElements('div', `savedCardName`, savedCard[i]);
                 let saveCardText =document.querySelectorAll(`.savedCardName`);
-                createAllCardElements('h1', `savedCardNameText`, saveCardText[i], '', `${json.class}`);
+                createAllCardElements('h1', `savedCardNameText`, saveCardText[i], '', `${json[k].class}`);
                 createAllCardElements('div', `savedCardPicture`, savedCard[i]);
                 saveCardText = document.querySelectorAll(`.savedCardPicture`);
                 createAllCardElements('img', `savedCardPictureImg`, saveCardText[i]);
-                document.querySelectorAll('.savedCardPictureImg')[i].src = json.image + '.jpg';
+                document.querySelectorAll('.savedCardPictureImg')[i].src = json[k].image + '.jpg';
                 createAllCardElements('div', `savedCardSpecs`, savedCard[i]);
                 saveCardText = document.querySelectorAll(`.savedCardSpecs`);
                 for(let j=0; j < 6; j++){
@@ -70,25 +72,30 @@ async function postData(url = "", data = {}) {
 
             }
         }
-        console.log('puted')
+
+        }
     } 
 // console.log("Успех:", JSON.stringify(json));
 
-for (let i =0; i < 1; i++){
+
         let userLogin = localStorage.getItem('login');
         let postForToServ = {
             login: userLogin
         }
         postData('/putCard', postForToServ);
-        
-    let deleteButton = document.querySelectorAll(".delete");
-    for ( let i =0; i < deleteButton.length; i++){
-        deleteButton[i].addEventListener('click', ()=>{
-            console.log('deleting')
-            let cards = deleteButton[i].parentNode.parentNode;
-                    cards.classList.add("none");
-                    console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id);
-                    deleting('/deleteCard', deleteButton[i].parentNode.parentNode.id);
-        })
-    }
-}
+ 
+    // let deleteButton = document.querySelectorAll(".delete");
+    // for ( let i =0; i < deleteButton.length; i++){
+    //     deleteButton[i].addEventListener('click', ()=>{
+    //         console.log('deleting')
+    //         let cards = deleteButton[i].parentNode.parentNode;
+    //                 cards.classList.add("none");
+    //                 console.log('deleted_btn id = ', deleteButton[i].parentNode.parentNode.id);
+    //                 let user = localStorage.getItem('login');
+    //                 let sended = new Object();
+    //                 sended.id = deleteButton[i].parentNode.parentNode.id;
+    //                 sended.login = user;
+    //                 deleting('/deleteCard', sended);
+    //                 console.log(sended, 'sended');
+    //     })
+    // } 
