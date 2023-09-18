@@ -115,6 +115,9 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
         connection.query(getCardsId, (err, result)=>{
             let cardsArr = JSON.parse(result[0].cardsCount);
             let allCards = [];
+            if (cardsArr == null){
+                res.end;
+            }else{
             for(let i=0; i < cardsArr.length; i++){
                 // console.log(cardsArr[i]);
                 let selectCurrent = `SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${cardsArr[i]}`;
@@ -126,7 +129,7 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
                         res.send(JSON.stringify(allCards))
                     }
                 })
-            }
+            }}
             
             
         })
@@ -148,25 +151,32 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
         }
     }
     )
-    console.log ('reqis=', req.body.id);
     let deletingId = `DELETE FROM hero WHERE id = ${req.body.id}`;
-    
     console.log('reques', req.body);
     connection.query(deletingId, (err, result)=>{ 
         console.log(err);
         console.log('\\\\\\');
+        // console.log('deleted from db')
+        // console.log(req.body.login)
         let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
         connection.query(getCardsId, (err, result)=>{
-            let cardsArr = result[0];
+            let cardsArr = JSON.parse(result[0].cardsCount);
+            console.log('tipo result 0' , result[0].cardsCount)
+            if (cardsArr == null){
+                res.end
+            }else{
             for (let i =0 ; i < cardsArr.length; i++){
                 console.log(cardsArr[i], 'lalka')
+                console.log(req.body.id)
                 if (cardsArr[i] == req.body.id){
-                    cardsArr[i]= null;
+                    cardsArr.splice(i,1);
                     let updateMem = `UPDATE user SET cardsCount= '${JSON.stringify(cardsArr)}' WHERE login = '${req.body.login}'`;
+                    console.log('updated list = ', cardsArr)
                     connection.query(updateMem, (err, result)=>{
                         console.log(result, 'updating');
                     })
                 }
+            }
             }
         })
     })

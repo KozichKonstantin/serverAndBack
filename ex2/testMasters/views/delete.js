@@ -6,10 +6,10 @@ async function deleting(url = "", data = {}) {
       "Content-Type": "application/json",
             },
         });
-        // const json = await response;
+        const json = await response;
     }
-
-
+    
+function deletingFunc(){
     let deleteBtn = document.querySelectorAll(".delete")
     console.log(deleteBtn)
     console.log(deleteBtn.length)
@@ -26,9 +26,9 @@ async function deleting(url = "", data = {}) {
             
         })
     }
+}
 
-
-// setTimeout(test, 2000)
+setInterval(deletingFunc, 500)
 
 
 // for(let i = 0; i< delete_btn.length; i++){
