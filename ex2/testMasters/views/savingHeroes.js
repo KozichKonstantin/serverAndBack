@@ -20,20 +20,15 @@ async function postData(url = "", data = {}) {
     } 
 
 let savingHeroesButtons = document.getElementsByClassName('saveHero');
-for (let i=0; i < data.length; i++){
-    savingHeroesButtons[i].addEventListener('click', function() {
-
-        // postData("/saveCard", info).then((data) => {
-        //     console.log(data); 
-        //   })
-
-        let number =  localStorage.getItem('number') - (-1);
-        localStorage.setItem('number',`${number}`)
-            d("h2", 'message', elementsMassive, "NEW")
-    } 
+// for (let i=0; i < data.length; i++){
+//     savingHeroesButtons[i].addEventListener('click', function() {
+//         let number =  localStorage.getItem('number') - (-1);
+//         localStorage.setItem('number',`${number}`)
+//             d("h2", 'message', elementsMassive, "NEW")
+//     } 
             
-    )
-}
+//     )
+// }
 
 let valued = [];
 let savedHeroesBase = {};

@@ -82,7 +82,7 @@ async function postData(url = "", data = {}) {
         let postForToServ = {
             login: userLogin
         }
-        postData('/putCard', postForToServ);
+        postData('http://localhost:3500/putCard', postForToServ);
  
     // let deleteButton = document.querySelectorAll(".delete");
     // for ( let i =0; i < deleteButton.length; i++){

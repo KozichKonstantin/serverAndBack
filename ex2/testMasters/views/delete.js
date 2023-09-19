@@ -11,18 +11,18 @@ async function deleting(url = "", data = {}) {
     
 function deletingFunc(){
     let deleteBtn = document.querySelectorAll(".delete")
-    console.log(deleteBtn)
-    console.log(deleteBtn.length)
+    // console.log(deleteBtn)
+    // console.log(deleteBtn.length)
+    let cardId = new Object();
     for(let i =0; i < deleteBtn.length; i++){
         deleteBtn[i].addEventListener('click', ()=>{
             let cards = deleteBtn[i].parentNode.parentNode;
                 cards.classList.add("none");
-                console.log('deleting');
-                console.log('deletedBtn id = ', deleteBtn[i].parentNode.parentNode.id)
-                let cardId = new Object();
+                // console.log('deleting');
+                // console.log('deletedBtn id = ', deleteBtn[i].parentNode.parentNode.id);
                 cardId.id = deleteBtn[i].parentNode.parentNode.id;
                 cardId.login = localStorage.getItem('login');
-                return(deleting('/deleteCard', cardId))
+                return(deleting('http://localhost:3500/deleteCard', cardId))
             
         })
     }
