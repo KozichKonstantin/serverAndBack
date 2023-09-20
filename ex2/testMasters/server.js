@@ -145,14 +145,14 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
 app.post('/deleteCard', jsonParser, (req,res)=>{
     connection.connect(function(err){
         if(err){
-        return console.log("blya pizdec");
+        return console.log("1 blya pizdec");
         }else{
         console.log("ne pizdec");
         }
     }
     )
     let deletingId = `DELETE FROM hero WHERE id = ${req.body.id}`;
-    console.log('reques', req.body);
+    console.log('2 reqest got', req.body);
     connection.query(deletingId, (err, result)=>{ 
         console.log(err);
         console.log('\\\\\\');
@@ -161,19 +161,22 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
         let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
         connection.query(getCardsId, (err, result)=>{
             let cardsArr = JSON.parse(result[0].cardsCount);
-            console.log('tipo result 0' , result[0].cardsCount)
+            console.log('4 cardsCount selected' , result[0].cardsCount)
             if (cardsArr == null){
+                console.log('5 error becouse of null')
                 res.end
             }else{
             for (let i =0 ; i < cardsArr.length; i++){
-                console.log(cardsArr[i], 'lalka')
-                console.log(req.body.id)
+                console.log(cardsArr[i], '5 lalka')
+                console.log(req.body.id) 
                 if (cardsArr[i] == req.body.id){
                     cardsArr.splice(i,1);
                     let updateMem = `UPDATE user SET cardsCount= '${JSON.stringify(cardsArr)}' WHERE login = '${req.body.login}'`;
-                    console.log('updated list = ', cardsArr)
+                    console.log('6 updated list before adding to db= ', cardsArr)
                     connection.query(updateMem, (err, result)=>{
-                        console.log(result, 'updating');
+                        console.log(result, '7 updated');
+                        console.log('8 just before resend')
+                        res.end;
                     })
                 }
             }
@@ -181,8 +184,8 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
         })
     })
 
-
-    res.end;
+    
+    
 })
 app.post ('/login/loginSucces', (req,res) => {
     let selectMore =`SELECT password FROM user WHERE login = '${req.body.login}'`;

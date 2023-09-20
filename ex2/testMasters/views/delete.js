@@ -1,8 +1,10 @@
 async function deleting(url = "", data = {}) {
+    console.log('deleting')
+    console.log(data)
     const response = await fetch(url, {
       method: "POST", 
        body: JSON.stringify(data), 
-    headers: {
+        headers: {
       "Content-Type": "application/json",
             },
         });
@@ -20,15 +22,26 @@ function deletingFunc(){
                 cards.classList.add("none");
                 // console.log('deleting');
                 // console.log('deletedBtn id = ', deleteBtn[i].parentNode.parentNode.id);
-                cardId.id = deleteBtn[i].parentNode.parentNode.id;
-                cardId.login = localStorage.getItem('login');
-                return(deleting('http://localhost:3500/deleteCard', cardId))
+                // cardId.id = deleteBtn[i].parentNode.parentNode.id;
+                // cardId.login = localStorage.getItem('login');
+                // return(deleting('http://localhost:3500/deleteCard', cardId));
             
         })
     }
 }
-
-setInterval(deletingFunc, 500)
+function deleteFromDB(){
+    let deleteBtn = document.querySelectorAll(".delete");
+    for(let i=0; i < deleteBtn.length; i++){
+        deleteBtn[i].addEventListener('click', ()=>{
+        let cardId = new Object();
+        cardId.id = deleteBtn[i].parentNode.parentNode.id;
+        cardId.login = localStorage.getItem('login');
+        deleting('http://localhost:3500/deleteCard', cardId);
+        }
+    )}
+}
+setInterval(deletingFunc, 500);
+setInterval(deleteFromDB, 500);
 
 
 // for(let i = 0; i< delete_btn.length; i++){
