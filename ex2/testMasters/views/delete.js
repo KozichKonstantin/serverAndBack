@@ -41,7 +41,7 @@ function deleteFromDB(){
     )}
 }
 setInterval(deletingFunc, 500);
-setInterval(deleteFromDB, 500);
+setTimeout(deleteFromDB, 501)
 
 
 // for(let i = 0; i< delete_btn.length; i++){
