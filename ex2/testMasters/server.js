@@ -53,9 +53,10 @@ app.post('/saveCard', jsonParser, (req,res) =>{
     }
     )
     let insertOne = `INSERT INTO hero (class, image, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES ('${req.body[2].class}', '${req.body[1].img}', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`;
-   
+    
     connection.query(insertOne,(err, result)=>{
     // let insertTwo = `INSERT INTO hero (class, image, strength, strength, dexterity, constitution, intelligence, wisdom, charisma) VALUES( 'sam', 'som', ${req.body[0].valued[0]}, ${req.body[0].valued[1]}, ${req.body[0].valued[2]}, ${req.body[0].valued[3]}, ${req.body[0].valued[4]}, ${req.body[0].valued[5]})`
+    
     let upcomingCardId = result.insertId;
     let cardsId = [];
     let currentUser = req.body[3].user;
@@ -176,7 +177,7 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
                     connection.query(updateMem, (err, result)=>{
                         console.log(result, '7 updated');
                         console.log('8 just before resend')
-                        res.end;
+                        res.send(console.log('completed delete /////'));
                     })
                 }
             }
