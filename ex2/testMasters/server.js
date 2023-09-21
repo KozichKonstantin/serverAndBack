@@ -70,27 +70,12 @@ app.post('/saveCard', jsonParser, (req,res) =>{
             let incertCard = `UPDATE user SET cardsCount = '${JSON.stringify(cardsId)}'  WHERE login = '${currentUser}'`;
             connection.query( incertCard, (err, result) =>{
                 console.log(err);
-                // console.log('result created', result);
             })
-        // }else{
-            // cardsId = result[0].cardsCount;
-            // cardsId.push(req.body[3].id);
-            // let incertCard = `UPDATE user SET cardsCount = ${cardsId}  WHERE login = '${currentUser}'`
-            // connection.query( incertCard, (err, result) =>{
-            //     console.log(err);
-            //     console.log('result added', result)
-            // })
-        //     console.log('it will be push')
-        // }
     })
-    
-
         console.log(err);
-        // console.log('/////////');
-        // console.log( result);
-        // console.log( result.insertId);
+        res.send(console.log('saving finished'));
     });
-    // console.log('result aproved');
+    
 })
 
 
@@ -127,7 +112,10 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
                     allCards.push(result[0]);
                     // console.log(allCards);
                     if (i == (cardsArr.length - 1)){  
-                        res.send(JSON.stringify(allCards))
+                        res.send(JSON.stringify(allCards)) && console.log('putcard completed')
+                    }else{
+                        console.log('something wroooong')
+                        res.end;
                     }
                 })
             }}
