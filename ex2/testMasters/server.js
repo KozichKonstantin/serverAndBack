@@ -178,6 +178,7 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
 })
 app.post ('/login/loginSucces', (req,res) => {
     let selectMore =`SELECT password FROM user WHERE login = '${req.body.login}'`;
+    console.log(req.body, 'login request')
     connection.connect(function(err){
         if(err){
         return console.log("blya pizdec");
