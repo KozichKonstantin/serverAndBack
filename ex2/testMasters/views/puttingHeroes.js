@@ -1,5 +1,5 @@
 import{stats} from './data.js';
-function createAllCardElements(type, createdClass, place, id="", text=""){
+export function createAllCardElements(type, createdClass, place, id="", text=""){
     const createdType = document.createElement(type);
     return createdClass && createdType.classList.add(...createdClass.split(" ")), text && (createdType.textContent = text), place.append(createdType), id && createdType.setAttribute(`id`,`${id}`)
 }
@@ -79,10 +79,12 @@ async function postData(url = "", data = {}) {
 
 
         let userLogin = localStorage.getItem('login');
+        if(userLogin != null){
         let postForToServ = {
             login: userLogin
         }
         postData('http://localhost:3500/putCard', postForToServ);
+    }
  
     // let deleteButton = document.querySelectorAll(".delete");
     // for ( let i =0; i < deleteButton.length; i++){

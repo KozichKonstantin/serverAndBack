@@ -100,6 +100,7 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
         let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
         connection.query(getCardsId, (err, result)=>{
             let cardsArr = JSON.parse(result[0].cardsCount);
+            console.log(cardsArr)
             let allCards = [];
             if (cardsArr == null){
                 res.end;

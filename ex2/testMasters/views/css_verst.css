@@ -81,11 +81,8 @@ a:hover > .logo{
    cursor: pointer;
    background-color: rgb(40, 40, 40);
    -webkit-transition: all 0.5s ease;
-   /* position: fixed; */
+   
 }
-
-
-
 .signIn{
     display: flex;
     height: 40px;
@@ -155,6 +152,59 @@ a:hover > .signIn{
     width: 100%;
     height: 100%;
 }
+
+/* не забыть перенести */
+
+
+.loginFail{
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 400px;
+    margin-top: 200px;
+    margin-left: 30%;
+    border-radius: 30px;
+    background-color: #000;
+
+}
+.needToAuthorize{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 90%;
+    border-radius: 30px;
+    background-color: rgb(61, 61, 61);
+}
+.needToAuthorize > p {
+    position: static;
+    margin-top: 50px;
+    font-size: 40px;
+    color: red;
+}
+.buttonToSignUp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    margin-top: 50px;
+    background-color: #000;
+    color: #FFF;
+    border-radius: 15px;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+/* не забыть перенести */
+
+
+
 .main_info_content{
     display: flex;
     align-items: center;
