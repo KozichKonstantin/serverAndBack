@@ -31,6 +31,19 @@ import {data} from './data.js';
 
 let leftButtonsMassiv = document.getElementsByClassName('slideButton_case_left')
 let rightButtonsMassiv = document.getElementsByClassName('slideButton_case_right')
+function hideButtons(){
+  for(let i = 0; i < leftButtonsMassiv.length; i++){
+    if(data[i].currentPicture == 1){
+      leftButtonsMassiv[i].classList.add("hiden");
+    }else{
+      console.log("ya ne eby")
+      rightButtonsMassiv[i].classList.remove("hiden")
+    }
+  }
+}
+
+window.onload = hideButtons();
+
 for(let i=0; i < leftButtonsMassiv.length; i++){
   var cardFirstImage = document.getElementsByClassName("frame " + data[i]['name'])[0]
   cardFirstImage.src = data[i]['img'] + '/' + data[i]['currentPicture'] + '.jpg';
@@ -57,12 +70,9 @@ for(let i=0; i<leftButtonsMassiv.length; i++){
       else{
       }
     }
-    if(data[i].currentPicture == 1){
-      leftButtonsMassiv[i].classList.add("hiden");
-    }else{
-      console.log("ya ne eby")
-      rightButtonsMassiv[i].classList.remove("hiden")
-    }
+    hideButtons()
+    
+    
   })
   
 }
@@ -94,7 +104,6 @@ for(let i=0; i<rightButtonsMassiv.length; i++){
       console.log("ya ne eby x2")
       leftButtonsMassiv[i].classList.remove("hiden")
     }
-    // document.getElementsByClassName('frame')[i].classList.remove('inAnimation');
   })
 }
 for(let i=0; i<leftButtonsMassiv.length; i++){

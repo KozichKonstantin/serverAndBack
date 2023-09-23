@@ -9,6 +9,7 @@ function loginCheck (login){
         console.log('not ok', login);
         let part = document.getElementsByClassName('block_1')[0];
         createAllCardElements('div', 'loginFail', part);
+        createAllCardElements('div', 'backgroundBlock', part);
         part = document.getElementsByClassName('loginFail')[0];
         createAllCardElements('div', 'needToAuthorize', part);
         part = document.getElementsByClassName('needToAuthorize')[0];
