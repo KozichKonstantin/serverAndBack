@@ -31,6 +31,10 @@ app.get('/firstPage', (req,res)=>{
 app.get('/saved', (req,res)=>{
     res.render('secondPage');
 })
+
+
+
+/************************************/
 app.get('/registration', (req,res)=>{
     res.render('registration');
 })
@@ -40,6 +44,10 @@ app.get('/loginPage', (req,res)=>{
 app.get('/registrationPage', (req,res)=>{
     res.render('registrationPage');
 })
+
+
+
+
 app.post('/saveCard', jsonParser, (req,res) =>{
     if(!req.body) return res.sendStatus(400);
 
