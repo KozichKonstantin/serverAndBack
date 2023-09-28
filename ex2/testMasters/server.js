@@ -31,10 +31,6 @@ app.get('/firstPage', (req,res)=>{
 app.get('/saved', (req,res)=>{
     res.render('secondPage');
 })
-
-
-
-/************************************/
 app.get('/registration', (req,res)=>{
     res.render('registration');
 })
@@ -44,8 +40,6 @@ app.get('/loginPage', (req,res)=>{
 app.get('/registrationPage', (req,res)=>{
     res.render('registrationPage');
 })
-
-
 
 
 app.post('/saveCard', jsonParser, (req,res) =>{
@@ -131,13 +125,6 @@ app.post(`/putCard`, jsonParser, (req,res)=>{
             
             
         })
-        // let selectMore =`SELECT id, class, image, strength, dexterity, constitution, intelligence, wisdom, charisma FROM hero WHERE id = ${result[id][i]}`;
-        // connection.query(selectMore, (err,result)=>{
-        //     console.log(err);
-        //     console.log('/a/a/a/a/a/a/a/a/a');
-        //     console.log(result[0]);
-        //     res.send(result[0]);
-        // })
     })
 })
 app.post('/deleteCard', jsonParser, (req,res)=>{
@@ -154,8 +141,6 @@ app.post('/deleteCard', jsonParser, (req,res)=>{
     connection.query(deletingId, (err, result)=>{ 
         console.log(err);
         console.log('\\\\\\');
-        // console.log('deleted from db')
-        // console.log(req.body.login)
         let getCardsId = `SELECT cardsCount FROM user WHERE login = '${req.body.login}'`
         connection.query(getCardsId, (err, result)=>{
             let cardsArr = JSON.parse(result[0].cardsCount);
@@ -201,7 +186,7 @@ app.post ('/login/loginSucces', (req,res) => {
         if (result[0].password == req.body.password){
             // console.log('succes', result[0].password);
             
-            res.render('finish');
+            res.redirect('/firstPage');
         }
         else{
             console.log('error', result);
@@ -250,5 +235,5 @@ app.post ('/registrationPage/registrationSucces', (req,res) => {
         console.log(err);
         console.log('added user name =', req.body.login);
     })
-    res.render('finish');
+    res.redirect('/firstPage');
 })
