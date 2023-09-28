@@ -1,9 +1,9 @@
 
 document.getElementsByClassName('loginP')[0].addEventListener('click', ()=>{
-    chosedPage('/loginPAge');
+    chosedPage('/login/loginSucces');
 });
 document.getElementsByClassName('regP')[0].addEventListener('click', ()=>{
-    chosedPage('/registrationPage');
+    chosedPage('/registrationPage/registrationSucces');
 });
 function chosedPage(addres){
     console.log(addres);
